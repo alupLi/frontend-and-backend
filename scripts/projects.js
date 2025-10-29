@@ -1,37 +1,21 @@
 ﻿// Данные проектов
 const projectsData = {
     1: {
-        title: "Личный сайт",
-        description: "Многостраничный адаптивный веб-сайт-портфолио с современным дизайном. Реализована валидация форм, интерактивные элементы и кроссбраузерная совместимость.",
-        technologies: ["HTML5", "CSS3", "JavaScript", "Flexbox", "Grid"],
-        liveLink: "https://example.com/personal-site",
-        githubLink: "https://github.com/username/personal-site",
+        title: "UPY-01",
+        description: "Первый проект, разработанный в рамках курса Фронтенд и бэкенд разработка",
+        technologies: ["HTML5", "CSS3"],
+        liveLink: "https://alupli.github.io/Upy-01/",
+        githubLink: "https://github.com/alupLi/Upy-01",
         screenshots: 3
     },
     2: {
-        title: "Todo-приложение",
-        description: "Интерактивное приложение для управления задачами с возможностью добавления, редактирования, удаления и фильтрации задач. Данные сохраняются в localStorage.",
-        technologies: ["JavaScript", "LocalStorage", "CSS3", "HTML5"],
-        liveLink: "https://example.com/todo-app",
-        githubLink: "https://github.com/username/todo-app",
+        title: "UPY-02",
+        description: "Второй проект, разработанный в рамках курса Фронтенд и бэкенд разработка",
+        technologies: ["JavaScript", "Bootstrap", "CSS3", "HTML5"],
+        liveLink: "https://alupli.github.io/frontend-and-backend-practice/",
+        githubLink: "https://github.com/alupLi/frontend-and-backend-practice",
         screenshots: 2
     },
-    3: {
-        title: "Интернет-магазин",
-        description: "Полнофункциональный интернет-магазин с корзиной покупок, фильтрацией товаров и системой оформления заказов. Реализован на React с использованием хуков.",
-        technologies: ["React", "React Hooks", "CSS Modules", "REST API"],
-        liveLink: "https://example.com/ecommerce",
-        githubLink: "https://github.com/username/ecommerce",
-        screenshots: 4
-    },
-    4: {
-        title: "Портфолио на Bootstrap",
-        description: "Адаптивное портфолио разработанное с использованием Bootstrap 5. Включает галерею проектов, контактную форму и анимации.",
-        technologies: ["Bootstrap 5", "JavaScript", "jQuery", "CSS3"],
-        liveLink: "https://example.com/bootstrap-portfolio",
-        githubLink: "https://github.com/username/bootstrap-portfolio",
-        screenshots: 3
-    }
 };
 
 // Инициализация модального окна
