@@ -6,7 +6,11 @@ const projectsData = {
         technologies: ["HTML5", "CSS3"],
         liveLink: "https://alupli.github.io/Upy-01/",
         githubLink: "https://github.com/alupLi/Upy-01",
-        screenshots: []
+        screenshots: [
+            "../assets/images/projects/UPY-01/UPY-01_screenshot_1.png",
+            "../assets/images/projects/UPY-01/UPY-01_screenshot_2.png",
+            "../assets/images/projects/UPY-01/UPY-01_screenshot_3.png"
+        ]
     },
     2: {
         title: "UPY-02",
