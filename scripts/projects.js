@@ -2,19 +2,23 @@
 const projectsData = {
     1: {
         title: "UPY-01",
-        description: "Первый проект, разработанный в рамках курса Фронтенд и бэкенд разработка",
+        description: "Первый проект, разработанный в рамках курса Фронтенд и бэкенд разработка, а именно во время самых первых практик, в самом начале семестра. Данный проект создан для освоения базы HTML и CSS.",
         technologies: ["HTML5", "CSS3"],
         liveLink: "https://alupli.github.io/Upy-01/",
         githubLink: "https://github.com/alupLi/Upy-01",
-        screenshots: 3
+        screenshots: []
     },
     2: {
         title: "UPY-02",
-        description: "Второй проект, разработанный в рамках курса Фронтенд и бэкенд разработка",
-        technologies: ["JavaScript", "Bootstrap", "CSS3", "HTML5"],
+        description: "Второй проект, разработанный в рамках курса Фронтенд и бэкенд разработка, как результат работы, проделанной с 7-ой по 12-ую практику. Он расширил знания о HTML и CSS, познакомил с Bootstrap и дал начало освоению JavaScript для работы сайта.",
+        technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
         liveLink: "https://alupli.github.io/frontend-and-backend-practice/",
         githubLink: "https://github.com/alupLi/frontend-and-backend-practice",
-        screenshots: 2
+        screenshots: [
+            "../assets/images/projects/UPY-02/UPY-02_screenshot_1.png",
+            "../assets/images/projects/UPY-02/UPY-02_screenshot_2.png", 
+            "../assets/images/projects/UPY-02/UPY-02_screenshot_3.png"
+        ]
     },
 };
 
@@ -62,10 +66,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const modalBody = document.querySelector('.modal-body');
 
-        // Генерируем скриншоты
-        const screenshotsHtml = Array.from({ length: project.screenshots }, (_, i) =>
-            `<div class="project-screenshot">Скриншот ${i + 1}</div>`
-        ).join('');
+        // Скриншоты
+        let screenshotsHtml;
+        if (project.screenshots && project.screenshots.length > 0) {
+            screenshotsHtml = project.screenshots.map((screenshot, index) =>
+            `<div class="screenshot-item">
+                <img src="${screenshot}" alt="Скриншот ${project.title} ${index + 1}" class="project-screenshot">
+            </div>`
+            ).join('');
+        }
+        else {
+            screenshotsHtml =
+            `<div class="screenshot-item screenshot-placeholder">
+                <div class="screenshot-content">
+                    <p>Скриншоты пока не добавлены</p>
+                    <div class="placeholder-icon">📷</div>
+                </div>
+            </div>`;
+        }
 
         // Генерируем технологии
         const techHtml = project.technologies.map(tech =>
@@ -121,3 +139,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
