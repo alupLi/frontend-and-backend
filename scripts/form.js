@@ -1,4 +1,4 @@
-// Валидация формы контактов
+// Г‚Г Г«ГЁГ¤Г Г¶ГЁГї ГґГ®Г°Г¬Г» ГЄГ®Г­ГІГ ГЄГІГ®Гў
 document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.querySelector('.contact-form');
 
@@ -10,19 +10,33 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
-            // Простая валидация
+            // Р’Р°Р»РёРґР°С†РёСЏ С„РѕСЂРјС‹
             if (name === '' || email === '' || message === '') {
-                alert('Пожалуйста, заполните все поля');
+                const emptyFields = [];
+                if (name === '') {
+                    document.getElementById('name').setAttribute('aria-invalid', 'true');
+                    emptyFields.push('РёРјСЏ');
+                }
+                if (email === '') {
+                    document.getElementById('email').setAttribute('aria-invalid', 'true');
+                    emptyFields.push('email');
+                }
+                if (message === '') {
+                    document.getElementById('message').setAttribute('aria-invalid', 'true');
+                    emptyFields.push('СЃРѕРѕР±С‰РµРЅРёРµ');
+                }
+                
+                alert(`РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РїРѕР»СЏ: ${emptyFields.join(', ')}`);
                 return;
             }
 
             if (!isValidEmail(email)) {
-                alert('Пожалуйста, введите корректный email');
+                alert('ГЏГ®Г¦Г Г«ГіГ©Г±ГІГ , ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© email');
                 return;
             }
 
-            // Если все проверки пройдены
-            alert('Сообщение отправлено!');
+            // Г…Г±Г«ГЁ ГўГ±ГҐ ГЇГ°Г®ГўГҐГ°ГЄГЁ ГЇГ°Г®Г©Г¤ГҐГ­Г»
+            alert('Г‘Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г®ГІГЇГ°Г ГўГ«ГҐГ­Г®!');
             contactForm.reset();
         });
     }

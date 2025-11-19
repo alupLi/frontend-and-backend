@@ -73,11 +73,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Скриншоты
         let screenshotsHtml;
         if (project.screenshots && project.screenshots.length > 0) {
-            screenshotsHtml = project.screenshots.map((screenshot, index) =>
-            `<div class="screenshot-item">
-                <img src="${screenshot}" alt="Скриншот ${project.title} ${index + 1}" class="project-screenshot">
-            </div>`
-            ).join('');
+            screenshotsHtml = project.screenshots.map((screenshot, index) => `
+                <div class="screenshot-item">
+                    <img src="${screenshot}" 
+                        srcset="${screenshot.replace('.png', '-150.png')} 150w,
+                                ${screenshot.replace('.png', '-300.png')} 300w,
+                                ${screenshot} 600w"
+                        sizes="(max-width: 768px) 280px, 400px"
+                        width="400" 
+                        height="300"
+                        alt="Скриншот ${project.title} ${index + 1}" 
+                        class="project-screenshot"
+                        loading="lazy">
+                </div>
+                `).join('');
         }
         else {
             screenshotsHtml =
