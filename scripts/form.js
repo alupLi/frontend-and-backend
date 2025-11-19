@@ -1,4 +1,4 @@
-// Âàëèäàöèÿ ôîðìû êîíòàêòîâ
+// Обработка формы обратной связи
 document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.querySelector('.contact-form');
 
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
-            // Валидация формы
+            // Валидация полей
             if (name === '' || email === '' || message === '') {
                 const emptyFields = [];
                 if (name === '') {
@@ -25,19 +25,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('message').setAttribute('aria-invalid', 'true');
                     emptyFields.push('сообщение');
                 }
-                
+
                 alert(`Пожалуйста, заполните поля: ${emptyFields.join(', ')}`);
                 return;
             }
 
             if (!isValidEmail(email)) {
-                alert('Ïîæàëóéñòà, ââåäèòå êîððåêòíûé email');
+                alert('Пожалуйста, введите корректный email');
                 return;
             }
 
-            // Åñëè âñå ïðîâåðêè ïðîéäåíû
-            alert('Ñîîáùåíèå îòïðàâëåíî!');
+            // Имитация отправки формы
+            alert('Сообщение отправлено!');
             contactForm.reset();
+
+            // Сбрасываем aria-invalid
+            document.getElementById('name').removeAttribute('aria-invalid');
+            document.getElementById('email').removeAttribute('aria-invalid');
+            document.getElementById('message').removeAttribute('aria-invalid');
         });
     }
 
