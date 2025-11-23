@@ -26,6 +26,7 @@ const projectsData = {
     },
 };
 
+let lastFocusedElement = null;
 // Инициализация модального окна
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('projectModal');
@@ -43,6 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Закрытие модального окна
     closeBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            closeModal();
+        }
+    });
 
     window.addEventListener('click', function (e) {
         if (e.target === modal) {
@@ -65,28 +72,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function openModal(projectId) {
+        lastFocusedElement = document.activeElement;
+
         const project = projectsData[projectId];
         if (!project) return;
 
+        const modal = document.getElementById('projectModal');
         const modalBody = document.querySelector('.modal-body');
+
+        // Добавляем ARIA-атрибуты для доступности
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-labelledby', 'modal-title');
+
+        // Скрываем основной контент от скринридера
+        document.querySelectorAll('body > *:not(.modal)')
+            .forEach(el => el.setAttribute('aria-hidden', 'true'));
 
         // Скриншоты
         let screenshotsHtml;
         if (project.screenshots && project.screenshots.length > 0) {
             screenshotsHtml = project.screenshots.map((screenshot, index) => `
                 <div class="screenshot-item">
-                    <img src="${screenshot}" 
-                        srcset="${screenshot.replace('.png', '-150.png')} 150w,
-                                ${screenshot.replace('.png', '-300.png')} 300w,
-                                ${screenshot} 600w"
-                        sizes="(max-width: 768px) 280px, 400px"
-                        width="400" 
-                        height="300"
-                        alt="Скриншот ${project.title} ${index + 1}" 
-                        class="project-screenshot"
-                        loading="lazy">
+                    <picture>
+                        <source type="image/avif" 
+                                srcset="${screenshot.replace('.png', '.webp')}">
+                        <source type="image/webp" 
+                                srcset="${screenshot.replace('.png', '.avif')}">
+                        <img src="${screenshot}" 
+                             srcset="${screenshot.replace('.png', '-150.png')} 150w,
+                                     ${screenshot.replace('.png', '-300.png')} 300w,
+                                     ${screenshot} 600w"
+                             sizes="(max-width: 768px) 280px, 400px"
+                             width="400" 
+                             height="300"
+                             alt="Скриншот ${project.title} ${index + 1}" 
+                             class="project-screenshot"
+                             loading="lazy">
+                    </picture>
                 </div>
-                `).join('');
+            `).join('');
         }
         else {
             screenshotsHtml =
@@ -131,8 +156,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closeModal() {
+        const modal = document.getElementById('projectModal');
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+
+        // Возвращаем видимость основному контенту
+        document.querySelectorAll('body > *:not(.modal)')
+            .forEach(el => el.removeAttribute('aria-hidden'));
+
+        // Возвращаем фокус на элемент, который открыл модалку
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+
+        // Убираем обработчик Escape
+        document.removeEventListener('keydown', handleEscape);
     }
 
     function filterProjects(filter) {

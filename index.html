@@ -36,19 +36,37 @@
                     </div>
                     <div class="hero-image">
                         <picture>
-                            <!-- Разные форматы -->
-                            <!-- <source type="image/avif" srcset="assets/images/profile/avatar-150.avif 150w, assets/images/profile/avatar-300.avif 300w" sizes="320px"> -->
-                            <!-- <source type="image/webp" srcset="assets/images/profile/avatar-150.webp 150w, assets/images/profile/avatar-300.webp 300w" sizes="320px"> -->
-                            
-                            <img class="profile-photo" 
-                                 src="assets/images/profile/avatar.png" 
-                                 srcset="assets/images/profile/avatar-150.png 150w, 
+                            <!-- Для мобильных -->
+                            <source media="(max-width: 768px)"
+                                    srcset="assets/images/profile/avatar-mobile.webp 300w,
+                                            assets/images/profile/avatar-mobile.avif 300w,
+                                            assets/images/profile/avatar-mobile.png 300w"
+                                    sizes="(max-width: 768px) 90vw, 320px"
+                                    type="image/avif">
+
+                            <!-- Для десктопа -->
+                            <source type="image/webp"
+                                    srcset="assets/images/profile/avatar-150.webp 150w,
+                                            assets/images/profile/avatar-300.webp 300w,
+                                            assets/images/profile/avatar.webp 600w"
+                                    sizes="(max-width: 768px) 90vw, 320px">
+
+                            <source type="image/avif"
+                                    srcset="assets/images/profile/avatar-150.avif 150w,
+                                            assets/images/profile/avatar-300.avif 300w,
+                                            assets/images/profile/avatar.avif 600w"
+                                    sizes="(max-width: 768px) 90vw, 320px">
+
+                            <!-- Фолбэк -->
+                            <img class="profile-photo"
+                                 src="assets/images/profile/avatar.png"
+                                 srcset="assets/images/profile/avatar-150.png 150w,
                                          assets/images/profile/avatar-300.png 300w,
                                          assets/images/profile/avatar.png 600w"
-                                 sizes="320px"
-                                 width="320" 
+                                 sizes="(max-width: 768px) 90vw, 320px"
+                                 width="320"
                                  height="320"
-                                 alt="Портрет студента"
+                                 alt="Аватар"
                                  fetchpriority="high">
                         </picture>
                     </div>

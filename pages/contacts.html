@@ -31,23 +31,38 @@
                     <h1>Свяжитесь со мной</h1>
 
                     <div class="contacts-content">
-                        <form class="contact-form">
-                            <div class="form-group">
-                                <label for="name">Имя:</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
+                        <form class="contact-form" aria-labelledby="contact-form-title">
+                            <fieldset>
+                                <legend id="contact-form-title" class="sr-only">Форма обратной связи</legend>
 
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
+                                <div class="form-group">
+                                    <label for="name">Имя <span class="required" aria-hidden="true">*</span></label>
+                                    <input type="text" id="name" name="name" required
+                                           aria-required="true"
+                                           aria-describedby="name-hint">
+                                    <span id="name-hint" class="field-hint">Обязательное поле</span>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="message">Сообщение:</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+                                    <input type="email" id="email" name="email" required
+                                           aria-required="true"
+                                           aria-describedby="email-hint">
+                                    <span id="email-hint" class="field-hint">Обязательное поле</span>
+                                </div>
 
-                            <button type="submit" class="btn submit-btn">Отправить сообщение</button>
+                                <div class="form-group">
+                                    <label for="message">Сообщение <span class="required" aria-hidden="true">*</span></label>
+                                    <textarea id="message" name="message" rows="5" required
+                                              aria-required="true"
+                                              aria-describedby="message-hint"></textarea>
+                                    <span id="message-hint" class="field-hint">Обязательное поле</span>
+                                </div>
+
+                                <button type="submit" class="btn submit-btn" aria-live="polite">
+                                    Отправить сообщение
+                                </button>
+                            </fieldset>
                         </form>
 
                         <div class="contact-info">

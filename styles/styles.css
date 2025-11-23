@@ -645,10 +645,15 @@ footer {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s;
+    border: none;
+    padding: 0;
 }
 
-    .close-modal:hover {
+    .close-modal:hover,
+    .close-modal:focus {
         background-color: var(--accent-hover);
+        outline: 2px solid var(--accent-hover);
+        outline-offset: 2px;
     }
 
 .modal-body {
@@ -831,4 +836,81 @@ a, button, input, textarea {
     }
 }
 
+.profile-photo {
+    object-fit: cover;
+}
 
+@media (max-width: 768px) {
+    .profile-photo {
+        object-fit: contain;
+    }
+}
+
+.hero-image img {
+    object-fit: cover;
+}
+
+/* Стили для доступности форм */
+.required {
+    color: var(--accent-color);
+}
+
+.field-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+/* Скрытый текст для скринридеров */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Улучшенные стили фокуса для доступности */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+.project-card-large:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Сообщения об ошибках */
+.error-message {
+    color: #ff4444;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+}
+
+    input[aria-invalid="true"] + .error-message,
+    textarea[aria-invalid="true"] + .error-message {
+        display: block;
+    }
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+legend {
+    padding: 0;
+    margin: 0;
+}
