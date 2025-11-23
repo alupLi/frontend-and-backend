@@ -503,7 +503,7 @@ main {
 
 .submit-btn {
     background-color: var(--accent-color);
-    color: #ffffff;
+    color: #000000;
     border: 2px solid #000000;
     font-weight: 600;
     padding: 0.8rem 2rem;
@@ -513,8 +513,8 @@ main {
 
     .submit-btn:hover {
         background-color: var(--accent-hover);
-        border-color: #ffffff;
-        box-shadow: 0 0 0 2px #ffffff;
+        border-color: var(--accent-hover);
+        box-shadow: 0 0 0 2px #000000;
     }
 
 .contact-info {
